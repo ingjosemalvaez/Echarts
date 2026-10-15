@@ -8,7 +8,7 @@
   <style>
     #chart {
       width: 100%;
-      height: 300px;
+      height: 500px;
     }
   </style>
 </head>
@@ -16,7 +16,10 @@
   <div id="chart"></div>
 
   <script>
-    const chart = echarts.init(document.getElementById('chart'));
+
+    var chart;
+
+    chart = echarts.init(document.getElementById('chart'));
 
     chart.setOption({
      legend: {
@@ -47,7 +50,7 @@
             label: {
                 show: true,
                 fontfamily: 'Roboto',
-                fontSize: 18,
+                fontSize: 14,
                 fontWeight: 'bold',
                 color: '#333'
             },
@@ -55,12 +58,12 @@
                 show: true,
                 lineStyle: {
                 color: '#4F81BD',
-                width: 5
+                width: 4
                 }
             },
             name: 'Nightingale Chart',
             type: 'pie',
-            radius: [50, 250],
+            radius: [50, 200],
             center: ['50%', '50%'],
             roseType: 'area',
             itemStyle: {
@@ -80,7 +83,11 @@
         ]
     });
 
-    window.addEventListener('resize', () => chart.resize());
+    window.addEventListener('resize', function () {
+        if (chart) chart.resize();
+    });
+
+    
   </script>
 </body>
 </html>
