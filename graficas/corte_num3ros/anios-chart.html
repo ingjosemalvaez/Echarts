@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ECharts Bar Chart</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  <style>
+    #chart {
+      width: 900px;
+      height: 500px;
+    }
+  </style>
+</head>
+<body> 
+  <div id="chart"></div>
+
+  <script>
+
+    var option;
+     var chart;
+
+    chart = echarts.init(document.getElementById('chart'));
+
+    option = {
+        grid: {
+            left: '45%', // Reduce el margen izquierdo a 0 (o los píxeles que necesites)
+            right: '0%',
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                // Use axis to trigger tooltip
+                type: 'shadow' // 'shadow' as default; can also be 'line' or 'shadow'
+            }
+        },
+        legend: {
+            orient: 'vertical',
+            right: 10,
+            top: 'center',
+            textStyle: {
+                fontFamily: 'Roboto',
+                fontSize: 14,
+                fontWeight: 'bold',
+                fontStyle: 'normal',
+                color: '#000000'
+            }
+        },
+        xAxis: {
+            type: 'value',
+            axisLabel: {
+                show: false
+            },
+            splitLine: {
+                show: false // Hides the Y-axis grid lines
+            }
+        },
+        yAxis: {
+            type: 'category',
+            axisLine: {
+                lineStyle: {
+                    width: 2,
+                    color: '#000000'
+                }
+            },
+            axisLabel: {
+                interval: 0,
+                fontSize: 14,
+                fontFamily: 'Roboto',
+                fontWeight: 'bold',
+                color: '#000000'
+            },
+            data: ['Amparo Directo en Revisión',
+                'Solicitud de Ejercicio de la Facultad de Atracción',
+                'Controversia Constitucional',
+                'Recurso de Reclamación',
+                'Amparo en Revisión',
+                'Acción de Inconstitucionalidad',
+                'Contradicción de Criterios',
+                'Solicitud de Reasunción de Competencia',
+                'Recurso de Reclamación en la Controversia Constitucional']
+        },
+        series: [
+            {
+                color: '#DA3296',
+                name: '2026',
+                type: 'bar',
+                stack: 'total',
+                label: {
+                    show: true,
+                    // Default label styles
+                    fontFamily: 'Roboto',
+                    fontSize: 16,
+                    fontWeight: 'bold',
+                    fontStyle: 'normal',
+                    color: '#000000'
+                },
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [75, 271, 151, 45, 73, 56, 51, 44, 18]
+            },
+            {
+                color: '#61B73A',
+                name: '2025',
+                type: 'bar',
+                stack: 'total',
+                label: {
+                    show: true,
+                    // Default label styles
+                    fontFamily: 'Roboto',
+                    fontSize: 16,
+                    fontWeight: 'bold',
+                    fontStyle: 'normal',
+                    color: '#000000'
+                },
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [343, 182, 187, 272, 171, 106, 102, 45, 67]
+            },
+            {
+                color: '#659CC8',
+                name: '2024',
+                type: 'bar',
+                stack: 'total',
+                label: {
+                    show: true,
+                    // Default label styles
+                    fontFamily: 'Roboto',
+                    fontSize: 16,
+                    fontWeight: 'bold',
+                    fontStyle: 'normal',
+                    color: '#000000'
+                },
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [63, 6, 61, 6, 33, 55, 14, null, null]
+            },
+            {
+                color: '#FE360B',
+                name: '2023 - 2019',
+                type: 'bar',
+                stack: 'total',
+                label: {
+                    show: true,
+                    // Default label styles
+                    fontFamily: 'Roboto',
+                    fontSize: 16,
+                    fontWeight: 'bold',
+                    fontStyle: 'normal',
+                    color: '#000000'
+                },
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [26, null, 21, null, 17, 24, 7, null, null]
+            }
+        ]
+    };
+
+    option && chart.setOption(option);
+
+    window.addEventListener('resize', function () {
+        if (chart) chart.resize();
+    });
+
+    
+  </script>
+</body>
+</html>
