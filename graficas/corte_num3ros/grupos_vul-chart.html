@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ECharts Bar Chart</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  <style>
+    #chart {
+      width: 100%;
+      height: 500px;
+    }
+  </style>
+</head>
+<body> 
+  <div id="chart"></div>
+
+  <script>
+
+    var option;
+    var chart;
+
+    chart = echarts.init(document.getElementById('chart'));
+
+    chart.setOption({
+        
+        color: ['#56A3F1', '#FFE434', '#56A3F1', '#FF917C'],        
+        legend: {},
+        radar: [
+            {
+            indicator: [
+                { text: 'Infancias y adolescencias', max: 80 },
+                { text: '2 o más grupos en \n situación de vulnerabilidad', max: 80 },                
+                { text: 'Personas con discapacidad', max: 80 },
+                { text: 'Personas mayores', max: 80 },                
+                { text: 'Niñas y mujeres', max: 80 },
+                { text: 'Comunidades y pueblos \n indígenas y afromexicanos', max: 80 },
+            ],
+            center: ['50%', '50%'],
+            radius: 190,
+            startAngle: 90,
+            splitNumber: 10,
+            symbol: 'rect',
+            symbolSize: 16,           
+            axisName: {
+                formatter: '{value}',
+                fontWeight: 'bold',
+                width: 10,
+                fontSize: 16,
+                fontfamily: 'Roboto',
+                color: '#000'
+            },
+            splitArea: {
+                areaStyle: {
+                    color: ['#fff', '#fff', ],
+                    width: 20,
+                    shadowColor: 'rgba(0, 0, 0, 0.2)',
+                    shadowBlur: 120
+                }
+            },
+            axisLine: {
+                lineStyle: {
+                    color: '#666',
+                    width: 0.2,
+                }
+            },
+            splitLine: {
+                lineStyle: {
+                    color: 'rgba(211, 253, 250, 10)',
+                }
+            }
+            },        
+        ],
+        series: [
+            {
+            type: 'radar',
+            simbolSize: 10,
+            lineStyle: {
+                width: 4
+            },
+            emphasis: {
+                lineStyle: {
+                    width: 6
+                }                
+            },
+            
+            data: [
+                {
+                value: [72, 79, 21, 31, 49, 67],
+                //name: 'Data A',
+                label: {
+                    show: true,
+                    color: '#000',
+                    position: 'bottom',
+                    fontWeight: 'bold',
+                    fontfamily: 'Roboto',
+                    fontSize: 18
+                },
+                }
+            ]
+            },            
+        ]       
+    });
+
+
+    window.addEventListener('resize', function () {
+        if (chart) chart.resize();
+    });
+
+    
+  </script>
+</body>
+</html>
