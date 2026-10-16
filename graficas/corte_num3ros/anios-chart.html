@@ -7,7 +7,7 @@
   <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
   <style>
     #chart {
-      width: 900px;
+      width: 100%;
       height: 500px;
     }
   </style>
@@ -22,9 +22,9 @@
 
     chart = echarts.init(document.getElementById('chart'));
 
-    option = {
+    chart.setOption({
         grid: {
-            left: '45%', // Reduce el margen izquierdo a 0 (o los píxeles que necesites)
+            left: '20%', // Reduce el margen izquierdo a 0 (o los píxeles que necesites)
             right: '0%',
         },
         tooltip: {
@@ -164,9 +164,9 @@
                 data: [26, null, 21, null, 17, 24, 7, null, null]
             }
         ]
-    };
+    });
 
-    option && chart.setOption(option);
+    //option && chart.setOption(option);
 
     window.addEventListener('resize', function () {
         if (chart) chart.resize();
