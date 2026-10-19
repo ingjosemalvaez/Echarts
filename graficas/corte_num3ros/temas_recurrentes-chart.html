@@ -23,12 +23,38 @@
     chart = echarts.init(document.getElementById('chart'));
 
     chart.setOption({
+        tooltip: {
+            backgroundColor: '#1f2937',
+            borderColor: '#3b82f6',
+            borderWidth: 1,
+            textStyle: {
+                color: '#fff',
+                fontSize: 12,
+                formatter: function (params) {
+                    return `${params.name}<br/>Valor: ${params.value}`;
+                }
+            },
+            formatter: function (params) {
+                return `
+                <div style="padding:5px">
+                    <strong>${params.data.name}</strong><br>                                    
+                </div>
+                `;
+                // return `
+                // <div style="padding:5px">
+                //     <strong>${params.data.name}</strong><br>
+                //     Total: ${params.data.value}<br>
+                //     Descripción: ${params.data.descripcion}
+                // </div>
+                // `;
+            }
+        },
         series: [
             {
             type: 'treemap',
             breadcrumb: {
                 show: false // Hides the bottom navigation/breadcrumb bar
-            },
+            },    
             label: {
                 show: true,
                 fontFamily: 'Roboto',
@@ -41,6 +67,7 @@
                 {
                     name: 'Contribuiciones \n 16%',
                     value: 16,
+                    descripcion: 'Asuntos relacionados con contribuciones',
                     itemStyle: { color: '#08205A' },
                     label: {
                         fontSize: 20,
