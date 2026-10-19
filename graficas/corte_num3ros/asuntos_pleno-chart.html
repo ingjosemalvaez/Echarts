@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ECharts Bar Chart</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  <style>
+    #chart {
+      width: 100%;
+      height: 500px;
+    }
+  </style>
+</head>
+<body> 
+  <div id="chart"></div>
+
+  <script>
+
+    var option;
+    var chart;
+
+    chart = echarts.init(document.getElementById('chart'));
+
+    chart.setOption({
+        grid: {
+            top: '0%', // Reduce el margen izquierdo a 0 (o los píxeles que necesites)
+            bottom: '20%',
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+            // Use axis to trigger tooltip
+            type: 'shadow' // 'shadow' as default; can also be 'line' or 'shadow'
+            },
+             textStyle: {
+                fontFamily: 'Roboto',
+                fontSize: 14,
+                fontWeight: 'bold',
+                fontStyle: 'normal',
+                color: '#000000'
+            }
+        },
+        legend: {
+            show: false
+        },
+        xAxis: {
+            type: 'category',
+            position: ' bottom',
+            axisLine: {
+                lineStyle: {
+                    width: 3,
+                    color: '#000000'
+                }
+            },
+            axisTick: {
+                show: false // Hides the small tick lines on the Y-axis
+            },
+            axisLabel: {
+                interval: 0,
+                fontSize: 13,
+                fontFamily: 'Roboto',
+                fontWeight: 'bold',
+                color: '#000000',
+                padding: 1
+            },
+            splitLine: {
+            show: false // Hides the Y-axis grid lines
+            },
+            data: [
+                'Amparo \n Directo \n en Revisión',
+                'Solicitud de \n Ejercicio\n de la \n Facultad de\n Atracción',
+                'Controversia \n Constitucional',
+                'Recurso\n de \n Reclamación',
+                'Amparo \n en \n Revisión',
+                'Acción \n de \n Inconstitucionalidad',
+                'Contradicción \n de \nCriterios',
+                'Solicitud de \n Reasunción\n de \nCompetencia',
+                'Recurso de \n Reclamación \n en la \nControversia \nConstitucional'
+            ]
+        },
+        yAxis: {
+            type: 'value',
+            max: 550,
+            axisLabel: {
+                show: false
+            },
+            splitLine: {
+                show: false // Hides the Y-axis grid lines
+            }
+        },
+        series: [
+            {
+            data: [
+                { value: 507, itemStyle: { color: '#003041' } },
+                { value: 459, itemStyle: { color: '#659CC8' } },
+                { value: 420, itemStyle: { color: '#DA3296' } },
+                { value: 323, itemStyle: { color: '#FFBA00' } },
+                { value: 294, itemStyle: { color: '#6D378C' } },
+                { value: 241, itemStyle: { color: '#61B73A' } },
+                { value: 174, itemStyle: { color: '#FE360B' } },
+                { value: 89, itemStyle: { color: '#08205A' } },
+                { value: 85, itemStyle: { color: '#DA3296' } }
+            ],
+            type: 'bar',
+            stack: 'total',
+            label: {
+                show: true,
+                // Default label styles
+                fontFamily: 'Roboto',
+                fontSize: 16,
+                fontWeight: 'bold',
+                fontStyle: 'normal',
+                color: '#FFFFFF'
+            },
+            emphasis: {
+                focus: 'series'
+            }
+            }
+        ]
+   
+    });
+
+    //option && chart.setOption(option);
+
+    window.addEventListener('resize', function () {
+        if (chart) chart.resize();
+    });
+
+    
+  </script>
+</body>
+</html>
+
+
