@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controversias Constitucionales disponibles en el portal por año</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  <style>
+    #chart {
+      width: 100%;
+      height: 500px;
+    }
+  </style>
+</head>
+<body> 
+  <div id="chart"></div>  
+<script>
+
+    var option;
+    var chart;
+
+    chart = echarts.init(document.getElementById('chart'));
+
+    chart.setOption({
+      tooltip: {
+        trigger: 'axis',
+        textStyle: {
+          fontFamily: 'Roboto',
+          fontSize: 14,
+          fontWeight: 'bold',
+          fontStyle: 'normal',
+          color: '#000000'
+        }
+      },
+      legend: {
+        textStyle: {
+          fontFamily: 'Roboto',
+          fontSize: 14,
+          fontWeight: 'bold',
+          fontStyle: 'normal',
+          color: '#000000'
+        }
+      },                
+      xAxis: {
+        type: 'category',
+        axisLabel: {
+          interval: 0,
+          fontSize: 14,
+          fontFamily: 'Roboto',
+          fontWeight: 'bold',
+          color: '#000000'
+        },
+        data: [
+          1995, 
+          1996, 
+          1997, 
+          1998, 
+          1999, 
+          2000, 
+          2001,
+          2002, 
+          2003, 
+          2004, 
+          2005, 
+          2006, 
+          2007, 
+          2008, 
+          2009, 
+          2010, 
+          2011, 
+          2012, 
+          2013,
+          2014, 
+          2015, 
+          2016, 
+          2017, 
+          2018, 
+          2019, 
+          2020,
+        ]
+      },
+      yAxis: {
+        type: 'value',
+         axisLabel: {
+                show: false
+          },
+         splitLine: {
+                show: false // Hides the Y-axis grid lines
+          }
+      },      
+      dataZoom: [
+        {
+          type: 'slider',
+          xAxisIndex: 0,
+          start: 0,
+          end: 100,
+
+          backgroundColor: 'rgba(255,255,255,0.4)', // Bar background
+          fillerColor: 'rgba(0,117,161,0.1)',  // Selected area fill
+          //backgroundColor: 'rgba(47,69,84,0.1)', // Bar background
+          //fillerColor: 'rgba(167,183,204,0.4)',  // Selected area fill
+          borderColor: '#004085',
+          handleStyle: {
+            color: '#0075a1',
+            borderColor: '#004085'
+          },
+          moveHandleStyle: {
+            color: '#00879D' // Color for the moving handle (ECharts 5.4+)
+          },
+          emphasis: {
+            moveHandleStyle: {
+              color: '#fac858' // Hover state for move handle
+            }
+          }
+
+        },
+        {
+          type: 'inside',
+          xAxisIndex: 0,
+          start: 0,
+          end: 100,
+          zoomOnMouseWheel: true,
+          moveOnMouseMove: true,
+          moveOnMouseWheel: true
+        }
+      ],
+
+      series: [
+        {
+          color: '#FE360B',
+          name: 'Número de asuntos',
+          lineStyle: {
+                width: 3
+          },
+          symbolSize: 12,
+          symbol: 'circle',
+          data: [
+              19,
+              57,
+              34,
+              29,
+              37,
+              37,
+              370,
+              67,
+              112,
+              109,
+              83,
+              153,
+              97,
+              171,
+              119,
+              95,
+              124,
+              123,
+              118,
+              119,
+              84,
+              251,
+              331,
+              230,
+              354,
+              182
+          ],
+          type: 'line'
+        }
+      ]
+    });
+
+    window.addEventListener('resize', function () {
+        if (chart) chart.resize();
+    });
+
+    
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
